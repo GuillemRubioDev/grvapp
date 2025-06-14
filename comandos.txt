@@ -1,0 +1,69 @@
+mvn clean package -DskipTests
+
+ docker-compose up --build -d
+
+
+ //reiniciar backend
+ docker-compose down
+docker-compose up --build -d
+
+
+
+//Para entrar a la base de datos
+ docker exec -it grvapp-db psql -U grvuser -d grvappdb     
+
+
+ //ejecutar como create para ejecutar 
+ mvn spring-boot:run -Dspring-boot.run.profiles=create
+
+ 
+
+ //para generar has de passwrds desde el archivo 
+ mvn exec:java -Dexec.mainClass="com.grvapp.backend.util.PasswordHasher"
+ 
+ 
+ 
+ ver logs desde git
+ docker logs -f grvapp-backend
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ front
+ npm run dev
+ 
+ 
+ crear proyecto react
+ 
+ npm create vite@latest grvapp-frontend --template react
+ npm install
+ npm install axios
+ npm install jwt-decode
+ npm install typescript@latest --save-dev
+ npm install react-router-dom
+npm install --save-dev @types/react-router-dom
+
+
+rm -rf node_modules
+rm package-lock.json
+npm install
+
+npm install react react-dom
+npm install --save-dev @types/react @types/react-dom
+
+
+¿Querés que ahora implementemos el endpoint GET /api/auth/confirm?token=... para activar la cuenta? Estás muy cerca de cerrar el ciclo.
+
+
+
+
+
+
+
+ 
