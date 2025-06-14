@@ -24,7 +24,6 @@ export const ToastProvider = ({ children }: { children: ReactNode }) => {
             {toast && (
                 <Toast
                     message={toast.message}
-                    icon={toast.icon}
                     onClose={() => setToast(null)}
                 />
             )}

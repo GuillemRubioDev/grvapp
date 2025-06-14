@@ -1,17 +1,30 @@
 {
-	"folders": [
-		{
-			"path": "frontend"
-		}
-	],
-	"settings": {
-		"workbench.colorTheme": "One Dark Pro",
-		"editor.tabSize": 4
-	},
-	"extensions": {
-		"recommendations": [
-			"esbenp.prettier-vscode",
-			"dbaeumer.vscode-eslint"
-		]
-	}
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "workbench.colorTheme": "One Dark Pro Darker",
+    "editor.tabSize": 4,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    },
+    "workbench.colorCustomizations": {
+      "editorGroup.border": "#007acc", // Azul intenso
+      "sideBar.border": "#3498db", // Azul cielo
+      "activityBar.border": "#2c3e50", // Azul oscuro
+      "editor.lineHighlightBorder": "#a9cce3", // Azul claro para destacar
+      "statusBar.border": "#5dade2",
+      "editor.background": "#1b2631", // Azul-gris oscuro
+      "activityBar.background": "#15436099" // Azul translúcido
+    }
+  },
+  "extensions": {
+    "recommendations": [
+      "esbenp.prettier-vscode",
+      "dbaeumer.vscode-eslint",
+      "formulahendry.auto-close-tag"
+    ]
+  }
 }

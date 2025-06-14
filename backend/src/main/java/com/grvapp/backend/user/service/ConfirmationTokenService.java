@@ -4,11 +4,14 @@ package com.grvapp.backend.user.service;
 import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.UUID;
+
+import org.springframework.stereotype.Service;
+
 import com.grvapp.backend.user.model.ConfirmationToken;
 import com.grvapp.backend.user.model.User;
 import com.grvapp.backend.user.repository.ConfirmationTokenRepository;
+
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor

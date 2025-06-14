@@ -1,9 +1,9 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
-import ToggleThemeSwitch from '../ToggleThemeSwitch';
-import { FaBars, FaChartBar, FaUsers, FaCog, FaFolderOpen, FaUser, FaSignOutAlt } from 'react-icons/fa';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { FaBars, FaChartBar, FaCog, FaFolderOpen, FaSignOutAlt, FaUser, FaUsers } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+import ToggleThemeSwitch from '../ToggleThemeSwitch';
 
 interface DecodedToken {
     sub: string;

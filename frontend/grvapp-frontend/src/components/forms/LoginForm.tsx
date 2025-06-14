@@ -1,9 +1,9 @@
-import { useState } from 'react';
 import axios from 'axios';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { FaEye, FaEyeSlash, FaLock, FaUser } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { useToast } from '../../hooks/UseToast';
-import { FaUser, FaLock, FaEye, FaEyeSlash } from 'react-icons/fa';
-import { useTranslation } from 'react-i18next';
 
 const LoginForm = () => {
     const [username, setUsername] = useState('');

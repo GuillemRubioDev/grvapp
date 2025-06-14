@@ -1,5 +1,5 @@
-import { Navigate, Outlet } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
+import { Navigate, Outlet } from 'react-router-dom';
 
 interface DecodedToken {
     exp: number;

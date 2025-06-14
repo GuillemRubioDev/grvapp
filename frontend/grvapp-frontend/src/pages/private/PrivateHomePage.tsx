@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
 import { jwtDecode } from 'jwt-decode';
-import PrivateLayout from '../../components/layouts/PrivateLayout';
-import DashboardCard from '../../components/DashboardCard';
-import { FaDumbbell, FaUtensils, FaHourglassHalf } from 'react-icons/fa';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { FaDumbbell, FaHourglassHalf, FaUtensils } from 'react-icons/fa';
+import DashboardCard from '../../components/DashboardCard';
+import PrivateLayout from '../../components/layouts/PrivateLayout';
 
 interface DecodedToken {
     exp: number;

@@ -1,16 +1,13 @@
 
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import LoginPage from './pages/LoginPage';
-import PrivatePage from './pages/PrivatePage';
-import UnauthorizedPage from './pages/UnauthorizedPage';
-import RequireAuth from './components/RequireAuth';
-import RegisterPage from './pages/RegisterPage';
-import NotFoundPage from './pages/NotFoundPage';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import PrivateRoutes from './components/PrivateRoutes';
-import PrivateHomePage from './pages/private/PrivateHomePage';
 import PublicRoute from './components/PublicRoutes';
-import { useToast } from './hooks/UseToast';
 import ConfirmEmailPage from './pages/ConfirmEmailPage';
+import LoginPage from './pages/LoginPage';
+import NotFoundPage from './pages/NotFoundPage';
+import PrivateHomePage from './pages/private/PrivateHomePage';
+import RegisterPage from './pages/RegisterPage';
+import UnauthorizedPage from './pages/UnauthorizedPage';
 function App() {
   return (
     <Router>

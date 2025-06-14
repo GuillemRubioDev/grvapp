@@ -1,12 +1,13 @@
 package com.grvapp.backend;
 
-import io.github.cdimascio.dotenv.Dotenv;
+import java.util.Properties;
+
 import org.springframework.context.ApplicationContextInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.env.MutablePropertySources;
 import org.springframework.core.env.PropertiesPropertySource;
 
-import java.util.Properties;
+import io.github.cdimascio.dotenv.Dotenv;
 
 public class DotenvInitializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
     @Override

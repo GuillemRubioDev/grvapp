@@ -1,5 +1,13 @@
 package com.grvapp.backend.user.service;
 
+import java.time.LocalDateTime;
+import java.util.Set;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.grvapp.backend.common.dto.ApiResponse;
 import com.grvapp.backend.common.exception.CustomException;
 import com.grvapp.backend.user.dto.RegisterRequest;
@@ -13,14 +21,6 @@ import com.grvapp.backend.user.repository.UserRepository;
 import com.grvapp.backend.util.PasswordHasher;
 
 import lombok.RequiredArgsConstructor;
-
-import java.time.LocalDateTime;
-import java.util.Set;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor

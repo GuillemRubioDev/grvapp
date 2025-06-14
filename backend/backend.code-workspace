@@ -1,0 +1,29 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"workbench.colorTheme": "Default Dark+",
+		"editor.tabSize": 2,
+		  "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    },
+		"workbench.colorCustomizations": {
+			"editorGroup.border": "#ff0000",
+			"sideBar.border": "#c81346",
+			"activityBar.border": "#8e110a",
+			"editor.lineHighlightBorder": "#e4eebd",
+			"statusBar.border": "#c1dbbc",
+			"editor.background": "#2b2929",
+			"activityBar.background": "#8b090979"
+		}
+	},
+	"extensions": {
+		"recommendations": [
+			"ms-vscode.node-debug2",
+			"dbaeumer.vscode-eslint"
+		]
+	}
+}

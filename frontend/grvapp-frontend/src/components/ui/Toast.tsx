@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
-import { MdCheckCircle, MdError } from "react-icons/md"; // 👈 íconos
+import { MdCheckCircle, MdError } from "react-icons/md";
 
 interface ToastProps {
     message: string;

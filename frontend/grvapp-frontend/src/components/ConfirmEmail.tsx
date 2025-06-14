@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
 import axios from "axios";
-import { FaCheckCircle, FaTimesCircle, FaExclamationTriangle, FaHourglassHalf } from "react-icons/fa";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { FaCheckCircle, FaExclamationTriangle, FaHourglassHalf, FaTimesCircle } from "react-icons/fa";
+import { useSearchParams } from "react-router-dom";
 
 
 const ConfirmEmail = () => {
