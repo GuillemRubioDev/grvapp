@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.grvapp.backend.common.dto.ApiResponse;
 import com.grvapp.backend.common.dto.ApiResponseLoginTrys;
 import com.grvapp.backend.common.exception.CustomException;
+import com.grvapp.backend.enums.DocumentType;
 import com.grvapp.backend.security.jwt.JwtUtils;
 import com.grvapp.backend.user.dto.LoginRequest;
 import com.grvapp.backend.user.dto.LoginResponse;
@@ -72,6 +73,15 @@ public class AuthService {
         Role defaultRole = roleRepository.findByName("ROLE_USER")
                 .orElseThrow(() -> new CustomException("rolUserNoEncontradoEnBD"));
 
+        DocumentType docType = null;
+        if (request.getDocumentType() != null && !request.getDocumentType().isBlank()) {
+            try {
+                docType = DocumentType.valueOf(request.getDocumentType());
+            } catch (IllegalArgumentException e) {
+                throw new CustomException("tipoDocumentoInvalido");
+            }
+        }
+
         // 2. Crear entidad User
         User user = User.builder()
                 .username(request.getUsername())
@@ -79,7 +89,7 @@ public class AuthService {
                 .password(passwordEncoder.encode(request.getPassword()))
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())
-                .documentType(request.getDocumentType())
+                .documentType(docType)
                 .documentNumber(request.getDocumentNumber())
                 .phone1(request.getPhone1())
                 .phone2(request.getPhone2())

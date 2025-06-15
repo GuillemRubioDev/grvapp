@@ -60,5 +60,7 @@
     "volverLogin": "Return to login",
     "emailInvalido": "Invalid email",
     "repetirContrasena": "Repeat password",
-    "camposRequeridos": "Required fields"
+    "camposRequeridos": "Required fields",
+    "contrasenasNoCoinciden": "Passwords do not match",
+    "contenerMayONum": "Password must contain at least one uppercase letter and one number"
 }

@@ -34,24 +34,29 @@ const RegisterForm = () => {
     const Required = () => <span className="text-danger">*</span>;
 
     const handleRegister = async () => {
-        if (!isFormValid) return;
-        try {
-            const response = await axios.post('http://localhost:8080/api/auth/register', {
-                username,
-                password,
-                email,
-                firstName,
-                lastName,
-                documentType,
-                documentNumber
-            });
+    if (!isFormValid) return;
+    try {
+        const response = await axios.post('http://localhost:8080/api/auth/register', {
+            username,
+            password,
+            email,
+            firstName,
+            lastName,
+            documentType,
+            documentNumber
+        });
 
-            showToast(response.data.message || "Registro exitoso", 'success');
-            navigate('/login');
-        } catch (err: any) {
-            showToast(err.response?.data?.message || "Registro fallido", 'error');
+        showToast(t(response.data.message) || t("registroOk"), 'success');
+        navigate('/login');
+      } catch (err: any) {
+        if (err.response && err.response.data && err.response.data.message) {
+            const { message } = err.response.data;
+            showToast(t(message), 'error');
+        } else {
+            showToast(t("registroKo"), 'error');
         }
-    };
+    }
+};
 
     return (
         <>
@@ -194,7 +199,6 @@ const RegisterForm = () => {
                     {t("volverLogin") || "Volver al login"}
                 </button>
             </div>
-
             {ToastComponent}
         </>
     );

@@ -60,5 +60,7 @@
     "volverLogin": "Volver al login",
     "emailInvalido": "Email inválido",
     "repetirContrasena": "Repetir contraseña",
-    "camposRequeridos": "Campos requeridos"
+    "camposRequeridos": "Campos requeridos",
+    "contrasenasNoCoinciden": "Las contraseñas no coinciden",
+    "contenerMayONum": "La contraseña debe contener al menos una mayúscula y un número"
 }
