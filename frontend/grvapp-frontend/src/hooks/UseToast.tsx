@@ -5,11 +5,11 @@ type ToastType = "success" | "error";
 
 export const useToast = () => {
     const [toast, setToast] = useState<{
-        message: string;
+        message: React.ReactNode; // Cambiado de string a React.ReactNode
         type: ToastType;
     } | null>(null);
 
-    const showToast = (message: string, type: ToastType = "success") => {
+    const showToast = (message: React.ReactNode, type: ToastType = "success") => { // Cambiado de string a React.ReactNode
         setToast({ message, type });
     };
 

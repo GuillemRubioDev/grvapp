@@ -53,5 +53,12 @@
     "configuracion": "Configuración",
     "otrasSecciones": "Otras secciones",
     "perfil": "Perfil",
-    "cerrarSesion": "Cerrar sesión"
+    "cerrarSesion": "Cerrar sesión",
+    "leQuedanIntentos": "Le quedan",
+    "intentos": "intenos",
+    "usuarioBloqueadoEspere": "Usuario bloqueado, espere para volver a intentarlo",
+    "volverLogin": "Volver al login",
+    "emailInvalido": "Email inválido",
+    "repetirContrasena": "Repetir contraseña",
+    "camposRequeridos": "Campos requeridos"
 }

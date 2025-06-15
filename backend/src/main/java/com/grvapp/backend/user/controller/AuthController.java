@@ -1,15 +1,6 @@
 package com.grvapp.backend.user.controller;
 
-import java.util.Set;
-import java.util.stream.Collectors;
-
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,9 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.grvapp.backend.common.dto.ApiResponse;
-import com.grvapp.backend.security.jwt.JwtUtils;
 import com.grvapp.backend.user.dto.LoginRequest;
-import com.grvapp.backend.user.dto.LoginResponse;
 import com.grvapp.backend.user.dto.RegisterRequest;
 import com.grvapp.backend.user.service.AuthService;
 
@@ -34,31 +23,11 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/api/auth")
 public class AuthController {
 
-    private final JwtUtils jwtUtils;
-    private final AuthenticationManager authenticationManager;
     private final AuthService authService;
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
-        try {
-            Authentication authentication = authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(
-                            loginRequest.getUsername(),
-                            loginRequest.getPassword()));
-
-            SecurityContextHolder.getContext().setAuthentication(authentication);
-            UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-
-            Set<String> roles = userDetails.getAuthorities().stream()
-                    .map(auth -> auth.getAuthority())
-                    .collect(Collectors.toSet());
-
-            String jwt = jwtUtils.generateJwtToken(authentication);
-
-            return ResponseEntity.ok(new LoginResponse(jwt, roles));
-        } catch (BadCredentialsException e) {
-            return ResponseEntity.status(401).body(new ApiResponse("usuarioOContrasenyaIncorrecto"));
-        }
+        return authService.login(loginRequest);
     }
 
     @PostMapping("/register")

@@ -70,7 +70,7 @@ public class User {
     private LocalDate birthDate;
 
     private Boolean emailVerified = false;
-    private Boolean accountNonLocked = true;
+
     private Boolean enabled = true;
 
     private LocalDateTime lastLogin;
@@ -91,5 +91,14 @@ public class User {
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
+
+    @Column(name = "failed_attempts", nullable = false)
+    private int failedAttempts = 0;
+
+    @Column(name = "lock_time")
+    private LocalDateTime lockTime;
+
+    @Column(name = "account_non_locked")
+    private boolean accountNonLocked = true;
 
 }

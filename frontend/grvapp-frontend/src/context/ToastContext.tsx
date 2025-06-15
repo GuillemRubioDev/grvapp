@@ -1,21 +1,20 @@
-// context/ToastContext.tsx
 import { createContext, useContext, useState, type ReactNode } from "react";
 import Toast from "../components/ui/Toast";
 
 interface ToastData {
-    message: string;
-    icon: string;
+    message: React.ReactNode;
+    type: "success" | "error";
 }
 
 const ToastContext = createContext<{
-    showToast: (message: string, icon?: string) => void;
+    showToast: (message: React.ReactNode, type?: "success" | "error") => void;
 } | null>(null);
 
 export const ToastProvider = ({ children }: { children: ReactNode }) => {
     const [toast, setToast] = useState<ToastData | null>(null);
 
-    const showToast = (message: string, icon = "✅") => {
-        setToast({ message, icon });
+    const showToast = (message: React.ReactNode, type: "success" | "error" = "success") => {
+        setToast({ message, type });
     };
 
     return (
@@ -24,6 +23,7 @@ export const ToastProvider = ({ children }: { children: ReactNode }) => {
             {toast && (
                 <Toast
                     message={toast.message}
+                    type={toast.type}
                     onClose={() => setToast(null)}
                 />
             )}

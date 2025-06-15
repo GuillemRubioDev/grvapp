@@ -53,5 +53,12 @@
     "configuracion": "Settings",
     "otrasSecciones": "Other sections",
     "perfil": "Profile",
-    "cerrarSesion": "Log out"
+    "cerrarSesion": "Log out",
+    "leQuedanIntentos": "You have",
+    "intentos": "attempts left",
+    "usuarioBloqueadoEspere": "User blocked, please wait to try again",
+    "volverLogin": "Return to login",
+    "emailInvalido": "Invalid email",
+    "repetirContrasena": "Repeat password",
+    "camposRequeridos": "Required fields"
 }

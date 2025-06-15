@@ -15,28 +15,45 @@ const LoginForm = () => {
     const isFormValid = username.trim() !== '' && password.trim() !== '';
 
 
-    const handleLogin = async () => {
-        try {
-            const response = await axios.post('http://localhost:8080/api/auth/login', {
-                username,
-                password,
-            });
+const handleLogin = async () => {
+    try {
+        const response = await axios.post('http://localhost:8080/api/auth/login', {
+            username,
+            password,
+        });
 
-            const token = response.data.token;
-            const roles = response.data.roles;
+        const token = response.data.token;
+        const roles = response.data.roles;
 
-            localStorage.setItem('token', token);
-            localStorage.setItem('roles', JSON.stringify(roles));
+        localStorage.setItem('token', token);
+        localStorage.setItem('roles', JSON.stringify(roles));
 
-            showToast(t('loginOk'), 'success');
+        showToast(t('loginOk'), 'success');
 
-            setTimeout(() => {
-                navigate('/private/home');
-            }, 300);
-        } catch {
+        setTimeout(() => {
+            navigate('/private/home');
+        }, 300);
+    } catch (error: any) {
+        if (error.response && error.response.data && error.response.data.message) {
+            const { message, remainingAttempts } = error.response.data;
+            let toastMsg: React.ReactNode = t(message); 
+            if (typeof remainingAttempts === 'number' && remainingAttempts > 0) {
+                toastMsg = (
+                    <>
+                        {t(message)}
+                        <br />
+                        <span className="block w-full text-center">
+                            {t('leQuedanIntentos')} {remainingAttempts} {t('intentos')}
+                        </span>
+                    </>
+                );
+            }
+            showToast(toastMsg, 'error');
+        } else {
             showToast(t('loginKo'), 'error');
         }
-    };
+    }
+};
 
     return (
         <>

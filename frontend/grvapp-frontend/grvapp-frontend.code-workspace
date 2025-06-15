@@ -7,8 +7,9 @@
   "settings": {
     "workbench.colorTheme": "One Dark Pro Darker",
     "editor.tabSize": 4,
+    		 "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
-      "source.organizeImports": true
+      "source.organizeImports": "explicit"
     },
     "workbench.colorCustomizations": {
       "editorGroup.border": "#007acc", // Azul intenso
