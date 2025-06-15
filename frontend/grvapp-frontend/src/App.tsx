@@ -1,12 +1,12 @@
 
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import PrivateRoutes from './components/PrivateRoutes';
-import PublicRoute from './components/PublicRoutes';
+import PrivateRoutes from './components/ui/PrivateRoutes';
+import PublicRoute from './components/ui/PublicRoutes';
 import ConfirmEmailPage from './pages/ConfirmEmailPage';
-import LoginPage from './pages/LoginPage';
-import NotFoundPage from './pages/NotFoundPage';
 import PrivateHomePage from './pages/private/PrivateHomePage';
-import RegisterPage from './pages/RegisterPage';
+import LoginPage from './pages/public/LoginPage';
+import NotFoundPage from './pages/public/NotFoundPage';
+import RegisterPage from './pages/public/RegisterPage';
 import UnauthorizedPage from './pages/UnauthorizedPage';
 function App() {
   return (

@@ -1,9 +1,8 @@
 import { jwtDecode } from 'jwt-decode';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { FaDumbbell, FaHourglassHalf, FaUtensils } from 'react-icons/fa';
-import DashboardCard from '../../components/DashboardCard';
-import PrivateLayout from '../../components/layouts/PrivateLayout';
+import PrivateNavbar from '../../components/layouts/PrivateNavbar';
+
 
 interface DecodedToken {
     exp: number;
@@ -46,8 +45,9 @@ const PrivateHomePage = () => {
     }, []);
 
     return (
-        <>
-            <PrivateLayout>
+        <><PrivateNavbar />
+            {/* <PrivateLayout>
+                <h1>dsd</h1>
                 <main className="flex-1 flex flex-col items-center justify-start px-4 py-12 w-full bg-background dark:bg-dark-background text-text dark:text-dark-text">
                     <h1 className="text-2xl font-bold mb-4">{t("bienvenido", { username })}</h1>
 
@@ -63,13 +63,13 @@ const PrivateHomePage = () => {
                     </p>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <DashboardCard
+                        <MenuCardGrv
                             title={t("entrenosTitulo")}
                             description={t("entrenosDescripcion")}
                             icon={<FaDumbbell className="text-xl" />}
                             onClick={() => alert("Ir a entrenos")}
                         />
-                        <DashboardCard
+                        <MenuCardGrv
                             title={t("dietasTitulo")}
                             description={t("dietasDescripcion")}
                             icon={<FaUtensils className="text-xl" />}
@@ -77,7 +77,7 @@ const PrivateHomePage = () => {
                         />
                     </div>
                 </main>
-            </PrivateLayout>
+            </PrivateLayout> */}
         </>
     );
 

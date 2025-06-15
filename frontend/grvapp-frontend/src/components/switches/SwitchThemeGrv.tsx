@@ -1,7 +1,7 @@
 import { FaMoon, FaSun } from "react-icons/fa";
-import { useTheme } from "../context/ThemeContext";
+import { useTheme } from "../../context/ThemeContext";
 
-const ToggleThemeSwitch = () => {
+const SwitchThemeGrv = () => {
     const { theme, toggleTheme } = useTheme();
     const enabled = theme === "dark";
 
@@ -21,5 +21,5 @@ const ToggleThemeSwitch = () => {
     );
 };
 
-export default ToggleThemeSwitch;
+export default SwitchThemeGrv;
 

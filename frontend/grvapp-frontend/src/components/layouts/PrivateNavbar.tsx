@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaBars, FaChartBar, FaCog, FaFolderOpen, FaSignOutAlt, FaUser, FaUsers } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import ToggleThemeSwitch from '../ToggleThemeSwitch';
+import SwitchThemeGrv from '../switches/SwitchThemeGrv';
 
 interface DecodedToken {
     sub: string;
@@ -80,7 +80,7 @@ const PrivateNavbar = () => {
                             <span className="flex items-center gap-2">
                                 <FaCog /> {t("modoOscuro")}
                             </span>
-                            <ToggleThemeSwitch />
+                            <SwitchThemeGrv />
                         </li>
                         <li
                             onClick={handleLogout}

@@ -1,14 +1,14 @@
 import type { ReactNode } from "react";
 
 
-interface DashboardCardProps {
+interface MenuCardGrvProps {
     title: string;
     description: string;
     icon: ReactNode;
     onClick?: () => void;
 }
 
-const DashboardCard = ({ title, description, icon, onClick }: DashboardCardProps) => {
+const MenuCardGrv = ({ title, description, icon, onClick }: MenuCardGrvProps) => {
     return (
         <div
             onClick={onClick}
@@ -21,4 +21,4 @@ const DashboardCard = ({ title, description, icon, onClick }: DashboardCardProps
     );
 };
 
-export default DashboardCard;
+export default MenuCardGrv;

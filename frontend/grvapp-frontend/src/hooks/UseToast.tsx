@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Toast from "../components/ui/Toast";
+import Toast from "../components/feedback/ToastGrv";
 
 type ToastType = "success" | "error";
 

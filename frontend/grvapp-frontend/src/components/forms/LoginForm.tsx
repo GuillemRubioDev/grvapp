@@ -1,59 +1,67 @@
-import axios from 'axios';
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { FaEye, FaEyeSlash, FaLock, FaUser } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
-import { useToast } from '../../hooks/UseToast';
+import axios from "axios";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { FaUser } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import { useToast } from "../../hooks/UseToast";
+import PasswordInputGrv from "../inputs/PasswordInputGrv";
+import TextInputGrv from "../inputs/TextInputGrv";
 
 const LoginForm = () => {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
     const { showToast, ToastComponent } = useToast();
     const { t } = useTranslation();
-    const isFormValid = username.trim() !== '' && password.trim() !== '';
+    const isFormValid = username.trim() !== "" && password.trim() !== "";
 
+    const handleLogin = async () => {
+        try {
+            const response = await axios.post(
+                "http://localhost:8080/api/auth/login",
+                {
+                    username,
+                    password,
+                }
+            );
 
-const handleLogin = async () => {
-    try {
-        const response = await axios.post('http://localhost:8080/api/auth/login', {
-            username,
-            password,
-        });
+            const token = response.data.token;
+            const roles = response.data.roles;
 
-        const token = response.data.token;
-        const roles = response.data.roles;
+            localStorage.setItem("token", token);
+            localStorage.setItem("roles", JSON.stringify(roles));
 
-        localStorage.setItem('token', token);
-        localStorage.setItem('roles', JSON.stringify(roles));
+            showToast(t("loginOk"), "success");
 
-        showToast(t('loginOk'), 'success');
-
-        setTimeout(() => {
-            navigate('/private/home');
-        }, 300);
-    } catch (error: any) {
-        if (error.response && error.response.data && error.response.data.message) {
-            const { message, remainingAttempts } = error.response.data;
-            let toastMsg: React.ReactNode = t(message); 
-            if (typeof remainingAttempts === 'number' && remainingAttempts > 0) {
-                toastMsg = (
-                    <>
-                        {t(message)}
-                        <br />
-                        <span className="block w-full text-center">
-                            {t('leQuedanIntentos')} {remainingAttempts} {t('intentos')}
-                        </span>
-                    </>
-                );
+            setTimeout(() => {
+                navigate("/private/home");
+            }, 300);
+        } catch (error: any) {
+            if (
+                error.response &&
+                error.response.data &&
+                error.response.data.message
+            ) {
+                const { message, remainingAttempts } = error.response.data;
+                let toastMsg: React.ReactNode = t(message);
+                if (typeof remainingAttempts === "number" && remainingAttempts > 0) {
+                    toastMsg = (
+                        <>
+                            {t(message)}
+                            <br />
+                            <span className="block w-full text-center">
+                                {t("leQuedanIntentos")} {remainingAttempts} {t("intentos")}
+                            </span>
+                        </>
+                    );
+                }
+                showToast(toastMsg, "error");
+            } else {
+                showToast(t("loginKo"), "error");
             }
-            showToast(toastMsg, 'error');
-        } else {
-            showToast(t('loginKo'), 'error');
         }
-    }
-};
+    };
 
     return (
         <>
@@ -63,54 +71,41 @@ const handleLogin = async () => {
                 </h2>
 
                 {/* Campo Usuario */}
-                <div className="relative mb-4">
-                    <FaUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-text dark:text-dark-text" />
-                    <input
-                        type="text"
-                        placeholder={t('usuario')}
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                        className="w-full pl-10 p-2 rounded border border-border dark:border-dark-border bg-background dark:bg-dark-background text-text dark:text-dark-text"
-                    />
-                </div>
+                <TextInputGrv
+                    type="text"
+                    placeholder={t("usuario")}
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    icon={<FaUser />}
+                />
 
                 {/* Campo Contraseña */}
-                <div className="relative mb-4">
-                    <FaLock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-text dark:text-dark-text" />
-                    <input
-                        type={showPassword ? 'text' : 'password'}
-                        placeholder={t('password')}
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        className="w-full pl-10 pr-10 p-2 rounded border border-border dark:border-dark-border bg-background dark:bg-dark-background text-text dark:text-dark-text"
-                    />
-                    <button
-                        type="button"
-                        onClick={() => setShowPassword(!showPassword)}
-                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-text dark:text-dark-text focus:outline-none"
-                    >
-                        {showPassword ? <FaEyeSlash /> : <FaEye />}
-                    </button>
-                </div>
+                <PasswordInputGrv
+                    placeholder={t("password")}
+                    value={password}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
+                    showPassword={showPassword}
+                    setShowPassword={setShowPassword}
+                />
 
                 {/* Boton Login */}
                 <button
                     onClick={handleLogin}
                     disabled={!isFormValid}
                     className={`w-full py-2 rounded transition-colors ${isFormValid
-                        ? 'bg-primary dark:bg-dark-primary text-white hover:bg-secondary dark:hover:bg-dark-secondary'
-                        : 'bg-gray-400 cursor-not-allowed text-white'
+                        ? "bg-primary dark:bg-dark-primary text-white hover:bg-secondary dark:hover:bg-dark-secondary"
+                        : "bg-gray-400 cursor-not-allowed text-white"
                         }`}
                 >
-                    {t('login')}
+                    {t("login")}
                 </button>
 
                 {/* Boton Registrarse */}
                 <button
-                    onClick={() => navigate('/registro')}
+                    onClick={() => navigate("/registro")}
                     className="w-full mt-3 text-sm text-secondary dark:text-dark-secondary hover:text-primary dark:hover:text-dark-primary underline"
                 >
-                    {t('registrarse')}
+                    {t("registrarse")}
                 </button>
             </div>
 
