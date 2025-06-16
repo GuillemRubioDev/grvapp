@@ -52,6 +52,9 @@ public class User {
     private String firstName;
     private String lastName;
 
+    @Column(length = 1024)
+    private String profilePictureUrl;
+
     @Enumerated(EnumType.STRING)
     @Column(length = 20)
     private DocumentType documentType;

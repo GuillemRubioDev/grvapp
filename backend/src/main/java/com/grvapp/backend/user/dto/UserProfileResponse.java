@@ -12,4 +12,5 @@ public class UserProfileResponse {
   private String email;
   private String firstName;
   private String lastName;
+  private String profilePictureUrl; // New field
 }
