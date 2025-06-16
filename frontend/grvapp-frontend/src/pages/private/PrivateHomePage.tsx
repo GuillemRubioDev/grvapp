@@ -1,7 +1,8 @@
 import { jwtDecode } from 'jwt-decode';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import PrivateNavbar from '../../components/layouts/PrivateNavbar';
+import { FaDumbbell, FaHourglassHalf, FaUtensils } from 'react-icons/fa';
+import MenuCardGrv from '../../components/cards/MenuCardGrv';
 
 
 interface DecodedToken {
@@ -45,39 +46,36 @@ const PrivateHomePage = () => {
     }, []);
 
     return (
-        <><PrivateNavbar />
-            {/* <PrivateLayout>
-                <h1>dsd</h1>
-                <main className="flex-1 flex flex-col items-center justify-start px-4 py-12 w-full bg-background dark:bg-dark-background text-text dark:text-dark-text">
-                    <h1 className="text-2xl font-bold mb-4">{t("bienvenido", { username })}</h1>
+        <>
+            <main className="flex-1 flex flex-col items-center justify-start px-4 py-12 w-full bg-background dark:bg-dark-background text-text dark:text-dark-text">
+                <h1 className="text-2xl font-bold mb-4">{t("bienvenido", { username })}</h1>
 
-                    <p className="mb-2">
-                        {t("rol")}: <strong>{roles.join(', ')}</strong>
-                    </p>
+                <p className="mb-2">
+                    {t("rol")}: <strong>{roles.join(', ')}</strong>
+                </p>
 
-                    <p className="mb-8 flex items-center gap-2">
-                        <FaHourglassHalf className="text-primary dark:text-dark-primary" />
-                        <span>
-                            {t("tiempoTokenRestante")}: <strong>{remainingTime}s</strong>
-                        </span>
-                    </p>
+                <p className="mb-8 flex items-center gap-2">
+                    <FaHourglassHalf className="text-primary dark:text-dark-primary" />
+                    <span>
+                        {t("tiempoTokenRestante")}: <strong>{remainingTime}s</strong>
+                    </span>
+                </p>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <MenuCardGrv
-                            title={t("entrenosTitulo")}
-                            description={t("entrenosDescripcion")}
-                            icon={<FaDumbbell className="text-xl" />}
-                            onClick={() => alert("Ir a entrenos")}
-                        />
-                        <MenuCardGrv
-                            title={t("dietasTitulo")}
-                            description={t("dietasDescripcion")}
-                            icon={<FaUtensils className="text-xl" />}
-                            onClick={() => alert("Ir a dietas")}
-                        />
-                    </div>
-                </main>
-            </PrivateLayout> */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <MenuCardGrv
+                        title={t("entrenosTitulo")}
+                        description={t("entrenosDescripcion")}
+                        icon={<FaDumbbell className="text-xl" />}
+                        onClick={() => alert("Ir a entrenos")}
+                    />
+                    <MenuCardGrv
+                        title={t("dietasTitulo")}
+                        description={t("dietasDescripcion")}
+                        icon={<FaUtensils className="text-xl" />}
+                        onClick={() => alert("Ir a dietas")}
+                    />
+                </div>
+            </main>
         </>
     );
 

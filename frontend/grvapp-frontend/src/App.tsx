@@ -1,9 +1,12 @@
 
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import PrivateLayout from './components/layouts/PrivateLayout';
 import PrivateRoutes from './components/ui/PrivateRoutes';
 import PublicRoute from './components/ui/PublicRoutes';
+import { UserProvider } from './context/UserContext';
 import ConfirmEmailPage from './pages/ConfirmEmailPage';
 import PrivateHomePage from './pages/private/PrivateHomePage';
+import PrivateProfilePage from './pages/private/PrivateProfilePage';
 import LoginPage from './pages/public/LoginPage';
 import NotFoundPage from './pages/public/NotFoundPage';
 import RegisterPage from './pages/public/RegisterPage';
@@ -20,9 +23,17 @@ function App() {
         <Route path="/no-autorizado" element={<UnauthorizedPage />} />
 
         {/* Privadas */}
-        <Route path="/private" element={<PrivateRoutes />}>{/* esta es de prueba */}
-          <Route path="home" element={<PrivateHomePage />} />
-          {/* aquí irán más páginas privadas en el futuro */}
+        <Route element={<PrivateRoutes />}>
+          <Route
+            element={
+              <UserProvider>
+                <PrivateLayout />
+              </UserProvider>
+            }
+          >
+            <Route path="/private/home" element={<PrivateHomePage />} />
+            <Route path="/private/perfil" element={<PrivateProfilePage />} />
+          </Route>
         </Route>
 
         {/* Catch-all */}

@@ -1,7 +1,7 @@
 import { jwtDecode } from 'jwt-decode';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { FaBars, FaChartBar, FaCog, FaFolderOpen, FaSignOutAlt, FaUser, FaUsers } from 'react-icons/fa';
+import { FaBars, FaChartBar, FaCog, FaFolderOpen, FaHome, FaSignOutAlt, FaUser, FaUsers } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import SwitchThemeGrv from '../switches/SwitchThemeGrv';
 
@@ -43,11 +43,13 @@ const PrivateNavbar = () => {
 
                 {appMenuOpen && (
                     <ul className="absolute left-0 mt-2 w-48 bg-surface dark:bg-dark-surface border border-border dark:border-dark-border rounded shadow-md z-10">
-                        <li className="px-4 py-2 text-text dark:text-dark-text hover:bg-border dark:hover:bg-dark-border cursor-pointer flex items-center gap-2">
-                            <FaChartBar /> {t("dashboard")}
+                        <li className="px-4 py-2 text-text dark:text-dark-text hover:bg-border dark:hover:bg-dark-border cursor-pointer flex items-center gap-2"
+                            onClick={() => navigate('/private/home')}>
+                            <FaHome /> {t("Home")}
                         </li>
-                        <li className="px-4 py-2 text-text dark:text-dark-text hover:bg-border dark:hover:bg-dark-border cursor-pointer flex items-center gap-2">
-                            <FaUsers /> {t("usuarios")}
+                        <li className="px-4 py-2 text-text dark:text-dark-text hover:bg-border dark:hover:bg-dark-border cursor-pointer flex items-center gap-2"
+                            onClick={() => navigate('/private/XXXXXXXXXXXX')}>
+                            <FaUsers /> {t("pruebanotFound")}
                         </li>
                         <li className="px-4 py-2 text-text dark:text-dark-text hover:bg-border dark:hover:bg-dark-border cursor-pointer flex items-center gap-2">
                             <FaChartBar /> {t("reportes")}
@@ -73,7 +75,9 @@ const PrivateNavbar = () => {
 
                 {userMenuOpen && (
                     <ul className="absolute right-0 mt-2 w-56 bg-surface dark:bg-dark-surface border border-border dark:border-dark-border rounded shadow-md z-10">
-                        <li className="px-4 py-2 flex items-center gap-2 text-text dark:text-dark-text hover:bg-border dark:hover:bg-dark-border cursor-pointer">
+                        <li className="px-4 py-2 flex items-center gap-2 text-text dark:text-dark-text hover:bg-border dark:hover:bg-dark-border cursor-pointer"
+                            onClick={() => navigate('/private/perfil')}
+                        >
                             <FaUser /> {t("perfil")}
                         </li>
                         <li className="px-4 py-2 flex items-center justify-between gap-2 text-text dark:text-dark-text hover:bg-border dark:hover:bg-dark-border cursor-pointer">

@@ -29,6 +29,7 @@ const LoginForm = () => {
             const token = response.data.token;
             const roles = response.data.roles;
 
+            localStorage.setItem('username', username);
             localStorage.setItem("token", token);
             localStorage.setItem("roles", JSON.stringify(roles));
 
@@ -43,6 +44,7 @@ const LoginForm = () => {
                 error.response.data &&
                 error.response.data.message
             ) {
+
                 const { message, remainingAttempts } = error.response.data;
                 let toastMsg: React.ReactNode = t(message);
                 if (typeof remainingAttempts === "number" && remainingAttempts > 0) {
